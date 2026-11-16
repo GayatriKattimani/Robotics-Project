@@ -6,13 +6,6 @@ Publishes /cylinder/pose (PoseStamped in the world frame):
   position    = cylinder centre (x, y, z_plane)
   orientation = yaw of the cylinder's long axis (roll = pitch = 0)
 
-Improvements over the first version:
-  * TF is looked up at the IMAGE timestamp (not Time(0)) -> no sync error
-  * plane height is a parameter and depends on lying / standing
-  * axis direction from image moments, back-projected to the plane
-  * median over N frames -> removes pixel noise, gives a std for validation
-  * red mask handles the HSV hue wrap-around (0..10 and 170..180)
-
 Params (private):  ~radius ~length ~lying ~avg_frames ~world_frame
 """
 import math
