@@ -1,21 +1,3 @@
-#!/usr/bin/env python3
-"""
-STEP 1 - SEARCH: find where the red cylinder is in the robot's workspace.
-
-The arm holds the camera looking down at the table and sweeps the base joint (joint1)
-left to right. At every stop it grabs a fresh image and looks for red pixels.
-When it sees the cylinder it
-  * computes a COARSE world position (ray from the pixel onto the table plane),
-  * turns joint1 toward the cylinder so it sits near the middle of the view,
-  * publishes the coarse position on /cylinder/coarse_pose (latched),
-  * leaves the arm there. Step 2 will refine the centre and orientation.
-
-Two camera "bands" are scanned: a near band (camera looking straight down) and a farther band.
-Needs: Gazebo + open_manipulator_controller running, /eye_in_hand/image_raw, TF.
-
-Params: ~radius (cylinder radius = centre height when lying, default 0.015)
-        ~q1_min ~q1_max ~q1_step (sweep, rad)   ~min_area (pixels)
-"""
 import math
 
 import cv2
