@@ -1,24 +1,3 @@
-#!/usr/bin/env python3
-"""
-Pick a LYING red cylinder (axis roughly radial) and stand it UPRIGHT at a fixed place.
-Object: 20 x 20 x 60 mm bar lying on its side (half-height 0.010, length 0.06).
-
-Services (ROBOTIS open_manipulator_controller): /goal_joint_space_path, /goal_tool_control.
-Gripper range accepted by the controller: -0.010 .. +0.010 (0.010 = fully open).
-
-Sequence
-  observe -> open gripper fully -> pre-grasp -> grasp (each move is CORRECTED with TF feedback: the real
-  end-effector position is compared with the target and the command is shifted) -> print the alignment of
-  jaws vs cylinder -> close slowly -> lift -> VERIFY the cylinder really rose (Gazebo ground truth)
-  -> ONE try: if the object did not rise, print GRASP FAILED and stop; else flip wrist (cylinder vertical) -> place.
-
-Run order:  rosparam delete /pick_place_standup   (clears params left by earlier runs, e.g. dry_run)
-            rosrun cylinder_pick pick_place_standup.py _stop_after:=grasp   (then close, lift, then no stop)
-
-Params: ~dry_run ~stop_after(grasp|close|lift) ~radius ~length ~grip_open ~grip_close ~grasp_dz
-        ~close_time ~squeeze ~stall_tol ~auto_raise ~refine ~ee_frame ~place_x ~place_y ~model
-        ~align_tol_deg ~cx ~cy ~cyaw (dry-run pose)
-"""
 import math
 
 import rospy
