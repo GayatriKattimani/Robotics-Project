@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-"""
-Red-cylinder localiser for an eye-in-hand camera (ROS1 / Gazebo classic).
-
-Publishes /cylinder/pose (PoseStamped in the world frame):
-  position    = cylinder centre (x, y, z_plane)
-  orientation = yaw of the cylinder's long axis (roll = pitch = 0)
-
-Params (private):  ~radius ~length ~lying ~avg_frames ~world_frame
-"""
 import math
 import collections
 
